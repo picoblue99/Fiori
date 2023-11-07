@@ -1,0 +1,175 @@
+<mvc:View controllerName="project1009.controller.main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:container="sap.suite.ui.commons"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:mic="sap.suite.ui.microchart">
+
+    <Page id="page" title="{i18n>title}">
+        <content> 
+          
+            <!-- Chart Container 추가하기 -->
+            	<container:ChartContainer
+                id="idChartContainer"
+                showFullScreen="true"
+                showPersonalization="true"
+                autoAdjustHeight="false"
+                title="Revenue">
+                <container:content>
+                    <container:ChartContainerContent
+                        icon="sap-icon://table-view"
+                        title="Line Chart">
+                        <container:content>
+                              <viz:VizFrame vizType="combination" 
+                                legendVisible="false"
+                                vizProperties="{
+                                    'title' : {
+                                        'visible' : true,
+                                        'text' : 'Products Chart'
+                                    },
+                                    'legendGroup' : {
+                                        'layout' : {'position' : 'left' }
+                                    },
+                                    'plotArea' : {
+                                        'drawingEffect' : 'glossy',
+                                        'dataLabel' : { visible: true, type:'value'},
+                                        'colorPalette' : ['#E8D9FF', '#FFD9EC']
+                                    }
+
+                                }"
+                                width="500px" height="500px" >
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset data="{view>/Products}">
+                                        <!--X축-->
+                                        <viz.data:dimensions>
+                                            <viz.data:DimensionDefinition name="나라" value="{view>Country}"/>
+                                        </viz.data:dimensions>
+
+                                        <!--Y축-->
+                                        <viz.data:measures>
+                                            <viz.data:MeasureDefinition name="수익" value="{view>Revenue}" />
+                                        <viz.data:MeasureDefinition name="수익2" value="{view>Revenue2}" />
+                                        </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+                                <viz:feeds>
+                                    <!--
+                                        uid 세팅 참고 (x축, y축)
+                                        line, column, bar, combination ...=> categoryAxis + valueAxis
+                                        pie, donut, ... => color + size
+                                    -->
+                                    <viz.feeds:FeedItem uid="categoryAxis" values="나라" type="Dimension" />   <!--X축-->
+                                    <viz.feeds:FeedItem uid="valueAxis" values="수익,수익2" type="Measure"/> <!-- y축 -->
+                                </viz:feeds>
+                                <viz:dependents>
+                                    <viz:Popover id="idPopOver" />
+                                </viz:dependents>
+                                </viz:VizFrame>
+                        </container:content>
+                    </container:ChartContainerContent>
+                    <container:ChartContainerContent
+                        icon="sap-icon://table-view"
+                        title="Table">
+                        <container:content>
+                            <Table id="idTable"
+                                inset="false"
+                                items="{
+                                 path: 'view>/Products'
+                                }"
+                                mode="SingleSelectMaster" 
+                                selectionChange="selectionChange"
+                                
+                                > <!--rows="{/Orders}"-->
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <content>
+                                            <Title text="Products" level="H2"/>
+                                            <ToolbarSpacer />
+                                            
+                                        </content>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                               
+                                    <OverflowToolbar>
+                                        <Label text="Wide range of available products"/>
+                                    </OverflowToolbar>
+                                
+                                <columns>
+                                    <Column
+                                        width="12em">
+                                        <Text text="Country" />
+                                    </Column>
+                                    <Column
+                                        width="12em">
+                                        <Text text="Profit" />
+                                    </Column>
+                                     <Column
+                                        width="12em">
+                                        <Text text="Forcast" />
+                                    </Column>
+                                     <Column
+                                        width="12em">
+                                        <Text text="Target" />
+                                    </Column>
+                                     <Column
+                                        width="12em">
+                                        <Text text="Revenue" />
+                                    </Column>
+                                     <Column
+                                        width="12em">
+                                        <Text text="Revenue2" />
+                                    </Column>
+                                    <Column
+                                        width="12em">
+                                        <Text text="Revenue3" />
+                                    </Column>
+                                    <Column >
+                                        <Text text="동글뱅이차트"/>
+                                        
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem vAlign="Middle">
+                                        <cells>
+                                          
+                                            <Text  text="{view>Country}" />
+                                            <Text  text="{view>Profit}" />
+                                            <Text  text="{view>Forcast}"/>
+                                            <Text  text="{view>Target}" />
+                                            <Text  text="{view>Revenue}" />
+                                            <Text  text="{view>Revenue2}"/>
+                                            <Text  text="{view>Revenue3}"/>
+                                            <mic:RadialMicroChart size="M" percentage="{= (${view>Revenue} + ${view>Revenue2} + ${view>Revenue3}) / 100}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                  
+                            </Table>
+                        </container:content>
+                    </container:ChartContainerContent>
+                </container:content>
+                <container:customIcons>
+                    <core:Icon id="customIcon" src="sap-icon://print" tooltip="Custom Content Print" press="onCustomActionPress"
+                        ></core:Icon>
+                </container:customIcons>
+                <container:toolbar>
+                    <OverflowToolbar id="appToolbar">
+                        <Button id="btnAction1" text="CustomAction" type="Transparent" press="onCustomActionPress"></Button>
+                        <ToolbarSpacer/>
+                        <Button id="btnAction2" text="CustomAction" type="Transparent" press="onCustomActionPress"></Button>
+                        <container:ChartContainerToolbarPlaceholder></container:ChartContainerToolbarPlaceholder>
+                    </OverflowToolbar>
+                </container:toolbar>
+                <container:dimensionSelectors>
+                    <Select id="idSelector">
+                        <core:Item key="0" text="Sales by Country"/>
+                    </Select>
+                </container:dimensionSelectors>
+            </container:ChartContainer>
+        </content>
+    </Page>
+</mvc:View>

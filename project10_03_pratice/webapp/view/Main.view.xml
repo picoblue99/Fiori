@@ -1,0 +1,29 @@
+<mvc:View controllerName="project1003pratice.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core" >
+    <Page id="page" title="{i18n>title}">
+        <content> 
+        <Panel>
+            <FlexBox class="sapUiSmallMargin" height="100px"
+            alignItems="Center" justifyContent="Center">
+             <VBox >
+              <Input id="idInput1"/>
+              <Select id="idSelect" width="100%" items="{/combo}">
+                <!--rows에 배열 바인딩한 것 처럼 Select는 items 안에 바인딩-->
+                <core:ListItem key='{key}' text='{text}'/>
+              
+                <!-- <items> -->
+                <!-- <core:ListItem key="PLUS" text="+"/>
+                <core:ListItem key="MINUS" text="-"/>
+                <core:ListItem key="MULTIPLE" text="*"/>
+                <core:ListItem key="DIVISION" text="/"/> -->
+                <!-- </items> -->
+              </Select>
+              <Input id="idInput2"/>
+               <Button width="100%" text="계산" type="Emphasized" press="onCalc"/>
+            </VBox>
+            </FlexBox>
+        </Panel>
+        </content>
+    </Page>
+</mvc:View>

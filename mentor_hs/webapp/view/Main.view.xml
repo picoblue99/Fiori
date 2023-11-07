@@ -1,0 +1,183 @@
+<mvc:View xmlns:uxap="sap.uxap" controllerName="mentor.mentorhs.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.uxap" 	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:m="sap.m" xmlns:core="sap.ui.core" >
+    <ObjectPageLayout id="ObjectPageLayout" useIconTabBar="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="Section sample">
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<headerContent>
+            <!-- <m:Input width="200px" 
+            placeholder="Customer ID"
+            showValueHelp="true" 
+            value="{main>/CustomerID}"
+            valueHelpRequest="onValueHelp" />
+            <m:Button width="100px"
+            type="Emphasized"
+            text="Search"
+            press="onSearch"/> -->
+            	<fb:FilterBar id="filterbar" filterContainerWidth="24rem" 
+                persistencyKey="myPersKey" useToolbar="false" search="onSearch" 
+               
+                filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                    <fb:filterGroupItems>
+                        <fb:FilterGroupItem name="CustomerID" label="CustomerID" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                
+                                    <m:Input width="200px" 
+                                    placeholder="CustomerID"
+                                    showValueHelp="true" 
+                                    value="{main>/CustomerID}"
+                                    valueHelpRequest="onValueHelp" 
+                                    showSuggestion="true"
+                                    suggest=".onSuggest"
+                                    suggestionItems="{/Customers}" >
+                                      <m:suggestionItems>
+                                    <core:Item text="{CustomerID}" />
+                                     </m:suggestionItems>
+                                    
+                                    </m:Input>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="OrderDate" label="OrderDate" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <m:DateRangeSelection displayFormat="yyyy-MM-dd"
+                                                    dateValue="{main>/OrderDateFrom}" 
+                                                    secondDateValue = "{main>/OrderDateTo}"/>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem name="SupplierName" label="SupplierName" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <m:MultiComboBox
+                                    name="SupplierName"
+                                    selectionChange=".onSelectionChange"
+                                    items="{
+                                        path: '/ProductSuppliers',
+                                        templateShareable: true  }"  >
+                                    <core:Item key="{key}" text="{name}"/>
+                                </m:MultiComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+        </headerContent>
+
+		<sections>
+			
+			<ObjectPageSection titleUppercase="false" title="Section 5">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:Table id="idTable"
+                                inset="false"
+                                items="{
+                                 path: '/Orders',
+                                 filters: [{
+                                    path: 'CustomerID'
+                                 }],
+                                 sorter: [{ path : 'OrderID',
+                                            descending : false }, 
+                                            { path : 'EmployeeID',
+                                            descending : true }]
+                                    
+                                }"
+                                mode="SingleSelectMaster" 
+                                selectionChange="selectionChange"
+                                
+                                > <!--rows="{/Orders}"-->
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar>
+                                        <m:content>
+                                            <m:Title text="Products" level="H2"/>
+                                            <m:ToolbarSpacer />
+                                            
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                               
+                                    <m:OverflowToolbar>
+                                        <m:Label text="Wide range of available products"/>
+                                    </m:OverflowToolbar>
+                                
+                                <m:columns>
+                                    <m:Column
+                                        width="12em">
+                                        <m:Text text="OrderID" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="12em">
+                                        <m:Text text="CustomerID" />
+                                    </m:Column>
+                                     <m:Column
+                                        width="12em">
+                                        <m:Text text="EmployeeID" />
+                                    </m:Column>
+                                     <m:Column
+                                        width="12em">
+                                        <m:Text text="OrderDate" />
+                                    </m:Column>
+                                     <m:Column
+                                        width="12em">
+                                        <m:Text text="RequiredDate" />
+                                    </m:Column>
+                                     <m:Column
+                                        width="12em">
+                                        <m:Text text="ShippedDate" />
+                                    </m:Column>
+                                    <m:Column
+                                        width="12em">
+                                        <m:Text text="Freight" />
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem vAlign="Middle">
+                                        <m:cells>
+                                          
+                                            <m:Text  text="{OrderID}" />
+                                            <m:Text  text="{CustomerID}" />
+                                            <m:Text  text="{EmployeeID}" />
+                                            <m:Text  text="{
+                                                path: 'OrderDate',
+                                                formatter : '.formatter.fnDateToString'
+                                                }" 
+                                            />
+                                            <m:Text  text="{
+                                                path: 'RequiredDate',
+                                                formatter : '.formatter.fnDateToString'
+                                                }" />
+                                            <m:Text  text="{
+                                                path: 'ShippedDate',
+                                                formatter : '.formatter.fnDateToString'
+                                                }" />
+                                            <m:Text  text="{
+                                                parts : [
+                                                    {path:'ShipVia'},
+                                                    {path:'Freight'}
+                                                ], formatter : '.formatter.fnFreightSum'
+                                                }"
+                                             />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+            <ObjectPageSection titleUppercase="false" title="Section 4">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+                            <m:Button text="go Detail" press="onNavDetail"/>
+							<!-- <m:Text text="Section 4 Page"/> -->
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+		</sections>
+
+	</ObjectPageLayout>
+</mvc:View>

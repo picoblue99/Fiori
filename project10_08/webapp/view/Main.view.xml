@@ -1,0 +1,59 @@
+<mvc:View controllerName="project1008.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+
+    <Page id="page" title="{i18n>title}">
+        <content> 
+            <viz:VizFrame vizType="stacked_column" 
+            legendVisible="false"
+            vizProperties="{
+                'title' : {
+                    'visible' : true,
+                    'text' : 'My First Chart'
+                },
+                'legendGroup' : {
+                    'layout' : {'position' : 'left' }
+                },
+                'plotArea' : {
+                    'drawingEffect' : 'glossy',
+                    'dataLabel' : { visible: true, type:'value'},
+                    'colorPalette' : ['#E8D9FF', '#FFD9EC']
+                }
+
+            }"
+            width="500px" height="500px" >
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{view>/list}">
+                    <!--X축-->
+                    <viz.data:dimensions>
+                        <viz.data:DimensionDefinition name="이름" value="{view>name}"/>
+                    </viz.data:dimensions>
+
+                    <!--Y축-->
+                    <viz.data:measures>
+                        <viz.data:MeasureDefinition name="숫자" value="{view>rate}" />
+                       <viz.data:MeasureDefinition name="숫자2" value="{view>cost}" />
+                    </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+              <viz:feeds>
+                <!--
+                    uid 세팅 참고 (x축, y축)
+                    line, column, bar ...=> categoryAxis + valueAxis
+                    pie, donut, ... => color + size
+                -->
+                <viz.feeds:FeedItem uid="categoryAxis" values="이름" type="Dimension" />   <!--X축-->
+                <viz.feeds:FeedItem uid="valueAxis" values="숫자,숫자2" type="Measure"/> <!-- y축 -->
+            </viz:feeds>
+            </viz:VizFrame>
+
+            <!--Controller에서 만들기-->
+            <viz:VizFrame id="idChart"> 
+
+            </viz:VizFrame>
+        </content>
+    </Page>
+</mvc:View>

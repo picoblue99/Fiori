@@ -1,0 +1,98 @@
+<mvc:View controllerName="project1003.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:table="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Panel> <!--깔끔하게 보이기 위해 패널 추가-->
+            
+        	<FlexBox 
+                class="sapUiSmallMargin"   
+				height="100px"
+				alignItems="Center"
+				justifyContent="Center">
+				<VBox>
+                <!--여기에 input, select, input, button  추가-->
+                 <Input id="idInput1"/>
+                    <Select id="idSelect" width="100%"  >
+                      <items> <!--클래스가 아닌 속성이므로 소문자-->
+                        <core:Item key="PLUS" text="+"/>
+                        <core:Item key="MINUS" text="-"/>
+                        <core:Item key="DIVISION" text="*"/>
+                        <core:Item key="MULTIPLE" text="/"/>
+                       </items>
+                   </Select>
+                     <Input id="idInput2"/>
+                      <Button width="100%" text = "계산" type = "Emphasized" press="onCalc"/>
+                 
+                 </VBox>
+		    	</FlexBox>
+            </Panel>
+               <table:Table id="idTable"
+				rows="{main>/list}"
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<table:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="계산기"/>
+					</OverflowToolbar>
+				</table:extension>
+					<table:rowActionTemplate>
+					<table:RowAction >
+						<table:items>
+							<table:RowActionItem icon="sap-icon://decline" press="onRowActionItem"/>
+						</table:items>
+					</table:RowAction>
+				</table:rowActionTemplate>
+				<table:columns>
+					<table:Column >
+						<Label text="수1" />
+						<table:template>
+							<Text text="{main>1}" wrapping="false" />
+						</table:template>
+						
+					</table:Column>
+					 <table:Column >
+						<Label text="연산자" />
+						<table:template>
+							<Text text="{main>2}" wrapping="false" />
+						</table:template>
+						
+					</table:Column>
+					 <table:Column >
+						<Label text="수2" />
+						<table:template>
+							<Text text="{main>3}" wrapping="false" />
+						</table:template>
+						
+					</table:Column>
+					 <table:Column >
+						<Label text="=" />
+						<table:template>
+							<Text text="{main>4}" wrapping="false" />
+						</table:template>
+						
+					</table:Column>
+					 <table:Column >
+						<Label text="결과" />
+						<table:template>
+							<Text text="{main>5}" wrapping="false" />
+						</table:template>
+						
+					</table:Column>
+					 <table:Column >
+						<Label text="Status" />
+						<table:template>
+								<Text text="{= ${main>5} >=10  ? 'Yes' : 'No'}" wrapping="false" 
+							visible="{= ${main>5} >=10}"/> 
+							
+							<!--10보다 크면 true리턴해 보임-->
+						
+						</table:template>
+						
+					</table:Column>
+				</table:columns>
+			</table:Table>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,51 @@
+<c:FragmentDefinition xmlns:c="sap.ui.core"
+    xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    xmlns:m="sap.m">
+
+    <m:Dialog id="idDialog" contentWidth="50%" 
+    contentHeight="60%" title="Customers"
+     draggable="true" resizable="true" >
+        <m:content>
+            <Table
+                rows="{/Customers}"
+                selectionMode="Single"
+                selectionBehavior="RowOnly"
+                rowSelectionChange="onRowSelectionChange"
+                paste="onPaste"
+                ariaLabelledBy="title">
+                <extension>
+                    <m:OverflowToolbar style="Clear">
+                        <m:Title id="title" text="Customer"/>
+                    </m:OverflowToolbar>
+                </extension>
+                <columns>
+                    <Column >
+                        <m:Label text="Customer ID" />
+                        <template>
+                            <m:Text text="{CustomerID}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column>
+                        <m:Label text="Company Name" />
+                        <template>
+                            <m:Text text="{CompanyName}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column >
+                        <m:Label text="Country" />
+                        <template>
+                            <m:Text text="{Country}" wrapping="false" />
+                        </template>
+                    </Column>
+
+                </columns>
+            </Table>
+
+        </m:content>
+        <m:endButton>
+            <m:Button id="idCustClose" text="close" press=".onClose" />
+        </m:endButton>
+    </m:Dialog>
+</c:FragmentDefinition>

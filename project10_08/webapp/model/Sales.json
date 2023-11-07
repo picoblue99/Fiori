@@ -1,0 +1,9 @@
+{
+    "sales" : [
+        { "product" : "Jackets", "amount" : "65"},
+        { "product" : "Shirts", "amount" : "70"},
+        { "product" : "Pants", "amount" : "83"},
+        { "product" : "Coats", "amount" : "92"},
+        { "product" : "Purse", "amount" : "77"}
+    ]
+}

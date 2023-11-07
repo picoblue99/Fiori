@@ -1,0 +1,10 @@
+<c:FragmentDefinition xmlns:c="sap.ui.core" xmlns="sap.m">
+    <Dialog id="idDialog" contentWidth="40%" contentHeight="50%">
+        <content>
+            <Text text="안녕 난 다이얼로그창" />
+        </content>
+        <endButton>
+            <Button text="닫기" press="onClose"/>
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>

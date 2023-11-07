@@ -1,0 +1,60 @@
+<mvc:View controllerName="project1004.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:table="sap.ui.table" >
+    <!--JSON Data의 Key값 기준으로 경로 설정-->
+    <Page id="page" title="{main>/list/1/name}">  <!--{main>/name/firstName} {main>/name/lastName} fiori application"-->
+        <content>
+            <HBox >
+            
+                <Button press="onClick" text="Press Me!"/>
+                <Input value="{main>/inpValue}"/> <!--화면: Aespa -->
+                <Text text="{main>/txtValue}" /> <!--양방향 영향 끼치는 투웨이 바인딩-->
+            
+            </HBox>
+                 <table:Table
+				 id="tt"
+				rows="{main>/list}"
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				rowActionCount="1" 
+				ariaLabelledBy="title"> <!--rowActionCount 버튼같은걸 하나 추가가 됨, 4개까지 가능-->
+				<table:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="People"/>
+					<ToolbarSpacer />
+					<Button text="Add" press="onAdd" icon="sap-icon://add"/>
+					<Button text="Delete" press="onDelete2" icon="sap-icon://delete"/>
+					</OverflowToolbar>
+				</table:extension>
+				<table:rowActionTemplate>
+					<table:RowAction >
+						<table:items>
+							<table:RowActionItem icon="sap-icon://decline" press="onRowActionItem"/>
+						</table:items>
+					</table:RowAction>
+				</table:rowActionTemplate>
+				<table:columns>
+					<table:Column  >
+						<Label text="Name" />
+						<table:template>
+						<!--	<Text text="{main>name}" wrapping="false" />-->
+						<Input value="{main>name}"/>
+						</table:template>
+					</table:Column>
+					 <table:Column  >
+						<Label text="Age" />
+						<table:template>
+							<Text text="{main>age}" wrapping="false" />
+						</table:template>
+					</table:Column>
+                    <table:Column  >
+						<Label text="Tel" />
+						<table:template>
+							<Text text="{main>tel}" wrapping="false" />
+						</table:template>
+					</table:Column>
+				</table:columns>
+			</table:Table>
+         </content>
+    </Page>
+</mvc:View>
