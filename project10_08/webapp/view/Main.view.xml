@@ -52,7 +52,7 @@
 
             <!--Controller에서 만들기-->
             <viz:VizFrame id="idChart"> 
-
+            <!--Git Test-->
             </viz:VizFrame>
         </content>
     </Page>
