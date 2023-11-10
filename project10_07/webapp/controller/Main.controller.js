@@ -72,7 +72,7 @@ sap.ui.define([
                 
                 var oData = this.getView().getModel("main").getData(); //getData로 main의 전체 데이터 가져옴
                 var aFilter = []; //CustomerID
-                var bFliter = []; //OrderDate
+                
                 // {CustomerID: '' ...} 이런 식으로 값이 들어올 것임
                 
                 if(oData.CustomerID)
@@ -112,9 +112,10 @@ sap.ui.define([
 
                 => obj 변수에 내가 선택한 Row의 모델 정보가 들어간다.
                 */
+               
                var obj = oEvent.getParameters().rowContext.getObject();
                obj.CustomerID;
-
+              
                sap.ui.getCore().byId("idCustClose").fireEvent('press');
                //press라는 이벤트를 동작하겠다
                 // 내가 화면에서 버튼을 클릭하지 않더라도 Controller의 특정 구간에서 버튼의 press 이벤트 실행 가능함

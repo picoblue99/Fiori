@@ -1,0 +1,56 @@
+<mvc:View controllerName="exam.exprogram00.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="detailPage" title="주문 내역 조회" >
+        <Table id="OrderTable"
+                inset="false"
+                items="{/Order_Details_Extendeds}">
+            <columns>
+                <Column
+                    width="12em">
+                    <Text text="주문 ID" />
+                </Column>
+                <Column
+                    minScreenWidth="Tablet"
+                    demandPopin="true">
+                    <Text text="상품 이름" />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                    hAlign="End">
+                    <Text text="상품 금액" />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                    hAlign="Center">
+                    <Text text="수량" />
+                </Column>
+                <Column
+                    hAlign="End">
+                    <Text text="할인율" />
+                </Column>
+                <Column
+                    hAlign="End">
+                    <Text text="총 금액" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle">
+                    <cells>
+                        <Text text="{OrderID}"/>
+                        <Text text="{ProductName}"/>
+                        <ObjectIdentifier title="{UnitPrice}"/>
+                        <Text text="{Quantity}"/>
+                        <Text text="{Discount}"/>
+                        <ObjectIdentifier title="{ExtendedPrice}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+	</Page>
+</mvc:View>

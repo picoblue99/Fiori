@@ -1,0 +1,74 @@
+<mvc:View controllerName="exam.exprogram10.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:t="sap.ui.table"  >
+    <Page id="page" > <Title id="idTitle"/>    
+         <Table id="idTable"
+                     inset="false"
+                     items="{
+                      path: 'main>/Order_Details_Extendeds'
+                     }"
+                     mode="SingleSelectMaster" 
+                     selectionChange="selectionChange"
+                     
+                     > <!--rows="{/Orders}"-->
+                     <headerToolbar>
+                         <OverflowToolbar>
+                             <content>
+                                 <Title text="Products" level="H2"/>
+                                 <ToolbarSpacer />
+                                 
+                     </content>
+                 </OverflowToolbar>
+             </headerToolbar>
+                       
+                            <OverflowToolbar>
+                                <Label text="Wide range of available products"/>
+                            </OverflowToolbar>
+                        
+                        <columns>
+                            <Column
+                                width="12em">
+                                <Text text="주문 ID" />
+                            </Column>
+                            <Column
+                                width="12em">
+                                <Text text="상품 이름" />
+                            </Column>
+                             <Column
+                                width="12em">
+                                <Text text="상품 금액" />
+                            </Column>
+                             <Column
+                                width="12em">
+                                <Text text="수량" />
+                            </Column>
+                             <Column
+                                width="12em">
+                                <Text text="할인율" />
+                            </Column>
+                             <Column
+                                width="12em">
+                                <Text text="총금액" />
+                            </Column>
+                         
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                  
+                                    <Text  text="{main>OrderID}" />
+                                    <Text  text="{main>ProductName}" />
+                                    <Text  text="{main>UnitPrice}"/>
+                                    <Text  text="{main>Quantity}" />
+                                    <Text  text="{main>Discount}" />
+                                    <Text  text="{main>ExtendedPrice}"/>
+                                   
+                                   
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+          
+                    </Table>
+    
+    </Page>
+</mvc:View>

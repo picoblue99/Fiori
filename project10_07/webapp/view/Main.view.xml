@@ -20,12 +20,10 @@
             press="onSearch"/> -->
             	<fb:FilterBar id="filterbar" filterContainerWidth="24rem" 
                 persistencyKey="myPersKey" useToolbar="false" search="onSearch" 
-               
                 filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                     <fb:filterGroupItems>
                         <fb:FilterGroupItem name="CustomerID" label="CustomerID" groupName="Group1" visibleInFilterBar="true">
                             <fb:control>
-                                
                                     <m:Input width="200px" 
                                     placeholder="CustomerID"
                                     showValueHelp="true" 

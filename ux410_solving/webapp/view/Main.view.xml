@@ -1,0 +1,114 @@
+<mvc:View controllerName="sap.btp.ux410solving.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 	xmlns:f="sap.f" xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:viz="sap.viz.ui5.controls" 
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:container="sap.suite.ui.commons"
+    >
+    <f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="VizFrame"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+                <fb:FilterBar id="filterbar" useToolbar="false" 
+                search="onSearch" >
+                    <fb:filterGroupItems>
+                        <fb:FilterGroupItem name="OrderID" label="OrderID" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox 
+                                    id="idCombobox"
+                                	showSecondaryValues="true" items="{
+                                    path: '/Orders'
+                                    }">
+                                 <core:ListItem key="{OrderID}" text="{OrderID}" 
+                                 additionalText="{CustomerID}"/>
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                         <fb:FilterGroupItem name="Type" label="Type" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox 
+                                    id="idCombobox2"
+                                    required="true"
+                                	showSecondaryValues="true"
+                                    items="{
+                                    path: 'main>/list'
+                                    }"
+                                    value="bar"
+                                    >
+                                 <core:ListItem key="{main>type}" text="{main>type}" 
+                                />
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+					<layout:HorizontalLayout allowWrapping="true">
+					</layout:HorizontalLayout><!--헤더의 고정과 접기-->
+                </f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				 <viz:VizFrame id="idVizFrame"
+                 uiConfig="{applicationSet:'fiori'}"
+                 vizType="bar" width="100%"
+                 selectData="onselectData"
+               legendVisible="true"
+               vizProperties="{
+                   'title' : {
+                       'visible' : true,
+                       'text' : 'Products Chart'
+                   },
+                   'legendGroup' : {
+                       'layout' : {'position' : 'right' }
+                   },
+                   'plotArea' : {
+                       'drawingEffect' : 'glossy',
+                       'dataLabel' : { visible: true, type:'value'},
+                       'colorPalette' : ['#E8D9FF', '#FFD9EC']
+                    }
+               }"
+                >
+                   <viz:dataset>
+                       <viz.data:FlattenedDataset id="idFlattenedDataset" data="{/Order_Details}">
+                       <!--X축-->
+                       <viz.data:dimensions>
+                           <viz.data:DimensionDefinition name="OrderID" value="{OrderID}"/>
+                           <viz.data:DimensionDefinition name="ProductID" value="{ProductID}"/>
+                       </viz.data:dimensions>
+                       <!--Y축-->
+                       <viz.data:measures>
+                           <viz.data:MeasureDefinition name="UnitPrice" value="{UnitPrice}" />
+                       </viz.data:measures>
+                       </viz.data:FlattenedDataset>
+                   </viz:dataset>
+               <viz:feeds>
+                   <!--
+                       uid 세팅 참고 (x축, y축)
+                       line, column, bar, combination ...=> categoryAxis + valueAxis
+                       pie, donut, ... => color + size
+                   -->
+                   <viz.feeds:FeedItem uid="categoryAxis" values="OrderID,ProductID" type="Dimension" />  
+                   <viz.feeds:FeedItem uid="valueAxis" values="UnitPrice" type="Measure"/> <!-- y축 -->
+               </viz:feeds>
+           
+               </viz:VizFrame>
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+            
+				<OverflowToolbar>
+					
+				</OverflowToolbar>
+                
+			</f:footer>
+		</f:DynamicPage>
+</mvc:View>

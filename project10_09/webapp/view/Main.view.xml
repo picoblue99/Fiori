@@ -11,7 +11,6 @@
 
     <Page id="page" title="{i18n>title}">
         <content> 
-          
             <!-- Chart Container 추가하기 -->
             	<container:ChartContainer
                 id="idChartContainer"
