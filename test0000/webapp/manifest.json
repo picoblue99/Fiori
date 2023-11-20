@@ -1,0 +1,152 @@
+{
+  "_version": "1.42.0",
+  "sap.app": {
+    "id": "test0000",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.7.5",
+      "toolsId": "9b482df3-3786-4a26-9641-04e4b952e638"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/V2/Northwind/Northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "test0000.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "fcl": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "test0000.view",
+        "controlId": "fcl",
+        "transition": "slide"
+      },
+      "routes": [
+        {
+          "name": "Main",
+          "pattern": ":layout:",
+          "target": ["mainView"]
+        },
+        {
+          "name": "NewPage",
+          "pattern": "newnewPage/:layout:",
+          "target": ["mainView", "newPage"]
+        },
+        {
+          "name": "Detail",
+          "pattern": "detail/{layout}/:product:",
+          "target": ["mainView", "detailView"]
+        },
+        {
+          "name": "DetailDetail",
+          "pattern": "detailDetail/{layout}/:product:",
+          "target": ["mainView", "detailView", "detailDetail"]
+        }
+      ],
+      "targets": {
+        "mainView": {
+          "viewName": "Main",
+          "controlAggregation": "beginColumnPages",
+          "clearControlAggregation": true
+        },
+        "newPage": {
+          "viewName": "NewPage",
+          "controlAggregation": "midColumnPages",
+          "clearControlAggregation": true
+        },
+        "detailView": {
+          "viewName": "Detail",
+          "controlAggregation": "midColumnPages",
+          "clearControlAggregation": true
+        },
+        "detailDetail": {
+          "viewName": "DetailDetail",
+          "controlAggregation": "endColumnPages",
+          "clearControlAggregation": true
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "test0000.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
+    "config": {
+      "fullWidth": true
+    }
+  }
+}

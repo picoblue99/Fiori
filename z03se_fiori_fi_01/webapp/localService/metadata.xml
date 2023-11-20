@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="Z03SE_GWFI01_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="Z03se_fit_gl" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompCod"/>
+                    <PropertyRef Name="AccCod"/>
+                </Key>
+                <Property Name="CompCod" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="회사코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccCod" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Account CodeAccount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccClass" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Account Class" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccType" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Account Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccName" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Account Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccDesc" Type="Edm.String" Nullable="false" MaxLength="300" sap:unicode="false" sap:label="전표 헤더내역" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Crnam" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="직원명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ertim" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time created" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chnam" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="직원명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Changed On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chtim" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time of change" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Z03se_fit_slip_h" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompCod"/>
+                    <PropertyRef Name="Fiyear"/>
+                    <PropertyRef Name="Slipno"/>
+                </Key>
+                <Property Name="CompCod" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="회사코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fiyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Slipno" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="전표번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccCod" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Account CodeAccount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Smtype" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Data element 전표유형" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DcmtNum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="증빙문서번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pstdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="  전표전기일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dcmtdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="전표증빙일" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sliptxt" Type="Edm.String" Nullable="false" MaxLength="300" sap:unicode="false" sap:label="전표 헤더내역" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Creemp" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="전표담당자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Revers" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="역분개 상태" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReversSlipnum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="전표번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EscrowSt" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="에스크로 입금 상태 플래그" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReimSt" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="reimbursement status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReimDt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="reimbursement date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReimRefNum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="반제참조전표번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="환불상태 플래그" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Crnam" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="직원명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ertim" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time created" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chnam" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="직원명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Changed On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chtim" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time of change" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Z03se_fit_slip_i" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompCod"/>
+                    <PropertyRef Name="ItemNum"/>
+                    <PropertyRef Name="Fiyear"/>
+                    <PropertyRef Name="SlipNum"/>
+                </Key>
+                <Property Name="CompCod" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="회사코드" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ItemNum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="ITEMNO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fiyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Fiscal Year" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SlipNum" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="전표번호" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Smtype" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Data element 전표유형" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccCod" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Account CodeAccount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccName" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Account Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccClass" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Account Class" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccDesc" Type="Edm.String" Nullable="false" MaxLength="300" sap:unicode="false" sap:label="전표 헤더내역" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dcindc" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="D/C Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AccPrice" Type="Edm.Decimal" Nullable="false" Precision="21" Scale="3" sap:unicode="false" sap:unit="Currency" sap:label="Account Price" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="통화" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Revers" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="역분개 상태" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Crnam" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="직원명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Created On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ertim" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time created" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chnam" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="직원명" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Changed On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Chtim" Type="Edm.Time" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time of change" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="Z03SE_GWFI01_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Z03se_fit_glSet" EntityType="Z03SE_GWFI01_SRV.Z03se_fit_gl" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Z03se_fit_slip_hSet" EntityType="Z03SE_GWFI01_SRV.Z03se_fit_slip_h" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Z03se_fit_slip_iSet" EntityType="Z03SE_GWFI01_SRV.Z03se_fit_slip_i" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://saphana01.konyang.ac.kr:8080/sap/opu/odata/sap/Z03SE_GWFI01_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://saphana01.konyang.ac.kr:8080/sap/opu/odata/sap/Z03SE_GWFI01_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

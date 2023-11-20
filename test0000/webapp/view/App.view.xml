@@ -1,0 +1,24 @@
+<mvc:View controllerName="test0000.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.f">
+    <Shell id="shell" appWidthLimited="false">
+        <App id="app">
+            <!-- FlexibleColumnLayout 에서 3개의 컬럼 레이아웃 영역을 교체하는 방식 -->
+            <!-- 데스크탑 위주 웹페이지 앱 -->
+            <!-- 한 화면에 최대 3개의 view 를 띄우는 레이아웃 -->
+            <f:FlexibleColumnLayout id="fcl" stateChange=".onStateChanged" backgroundDesign="Solid" layout="{fcl>/layout}" />
+            
+            <!-- FlexibleColumnLayout 컨트롤 내부 구성요소는 아래와 같음
+                
+            <f:beginColumnPages>
+                <mvc:XMLView id="beginView" viewName="test0000.view.Main"/>
+            </f:beginColumnPages>
+            <f:midColumnPages>
+                <mvc:XMLView id="detailView" viewName="test0000.view.Detail"/>
+            </f:midColumnPages>
+            <f:endColumnPages>
+            </f:endColumnPages> 
+            
+            -->
+
+        </App>
+    </Shell>
+</mvc:View>

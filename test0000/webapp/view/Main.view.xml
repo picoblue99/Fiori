@@ -1,0 +1,101 @@
+<mvc:View controllerName="test0000.controller.Main" xmlns:fb="sap.ui.comp.filterbar" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
+    <f:DynamicPage toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Main View" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader>
+            <fb:FilterBar useToolbar="false" search="onSearch" id="filterBar" showRestoreOnFB="true"  filterContainerWidth="10rem">
+                    <fb:filterGroupItems>
+                        <fb:FilterGroupItem groupName="G1" name="OrderID" label="Order ID" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input fieldGroupIds="search" name="OrderID" value="" submit="onSearch" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem groupName="G1" name="CustomerID" label="Customer ID" mandatory="true" visibleInFilterBar="true">
+                            <fb:control>
+                                <Input id="searchCustomerID" fieldGroupIds="search" showValueHelp="true" valueHelpRequest="onValueHelpCustomerID" name="CustomerID" value="{local>/search/EQ/CustomerID}" submit="onSearch" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem groupName="G1" name="OrderDate" groupTitle="Group1" label="Order Date" visibleInFilterBar="true">
+                            <fb:control>
+                                <DatePicker fieldGroupIds="search" name="OrderDate" value="" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox fitContainer="true">
+                <Table id="productTable" inset="false" items="{
+                    path : '/Products',
+                    filters : [{                                    
+                            path : 'UnitsOnOrder',
+                            operator : 'NE',
+                            value1 : '0'
+                        },{                                    
+                            path : 'ProductName',
+                            operator : 'Contains',
+                            value1 : 'C'
+                        }],
+                    sorter : [{
+                        path : 'UnitsInStock',
+                        descending : true
+                    },{
+                        path : 'UnitsOnOrder',
+                        descending : false
+                    }]
+                    }" class="sapFDynamicPageAlignContent" width="auto">
+
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="Table Title" level="H2"/>
+                                <ToolbarSpacer />
+                                <Button text="New Page" press="onGoNewPage"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="Product ID" />
+                        </Column>
+                        <Column>
+                            <Text text="Products" />
+                        </Column>
+                        <Column>
+                            <Text text="UnitsInStock" />
+                        </Column>
+                        <Column>
+                            <Text text="UnitsOnOrder" />
+                        </Column>
+                        <Column>
+                            <Text text="result" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press=".onListItemPress">
+                            <cells>
+                                <ObjectIdentifier title="{ProductID}" />
+                                <ObjectIdentifier title="{ProductName}" />
+                                <Text text="{UnitsInStock}" />
+                                <Text text="{UnitsOnOrder}" />
+                                <core:Icon 
+                                src="sap-icon://message-success"
+                                color="{= (${UnitsOnOrder} + ${UnitsInStock}) > 100 ? '#2F9D27' : '#000000'}" 
+                                visible="{= (${UnitsOnOrder} + ${UnitsInStock}) > 100 }"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,20 @@
+<mvc:View controllerName="z03sefiorifi01.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" 	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml" >
+    <Page id="page" title="{i18n>title}">
+        	<VBox fitContainer="true">
+		<!-- showRowCount should be set to false as the correct count cannot be
+			determined for tree table scenario -->
+		<smartTable:SmartTable id="smartTreeTable"
+			entitySet="orgHierarchy" tableType="TreeTable" useVariantManagement="false" useTablePersonalisation="true" header="Hierarchy"
+			showRowCount="false" enableAutoBinding="true" beforeRebindTable="onBeforeRebindTable" beforeExport="onBeforeExport"
+			initiallyVisibleFields="HIERARCHY_NODE,DESCRIPTION,LEVEL,DRILLDOWN_STATE,MAGNITUDE" enableAutoColumnWidth="true">
+			<!-- layout data used to make the table growing but the filter bar fixed -->
+			<smartTable:layoutData>
+				<FlexItemData growFactor="1" />
+			</smartTable:layoutData>
+		</smartTable:SmartTable>
+	</VBox>
+    </Page>
+</mvc:View>
