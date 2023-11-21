@@ -1,0 +1,42 @@
+<mvc:View controllerName="z03sefi01.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+        xmlns="sap.ui.table"
+        xmlns:m="sap.m"
+        xmlns:u="sap.ui.unified"
+        xmlns:core="sap.ui.core">
+     <m:Page
+            showHeader="false"
+            enableScrolling="false">
+        <m:content>
+            <TreeTable
+                    id="TreeTableBasic"
+                     rows="{path:'main>/', parameters: {arrayNames:['categories']}}"
+                   selectionMode="MultiToggle"
+                    enableSelectAll="false"
+                    ariaLabelledBy="title">
+                <extension>
+                    <m:OverflowToolbar style="Clear">
+                        <m:Title id="title" text="AESPAM Balance Sheet"/>
+                        <m:ToolbarSpacer/>
+                        <m:Button text="Collapse all" press="onCollapseAll"/>
+                       </m:OverflowToolbar>
+                </extension>
+                <columns>
+                    <Column width="13rem">
+                        <m:Label text="Account"/>
+                        <template>
+                            <m:Text text="{main>name}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="Price"/>
+                        <template>
+                            <u:Currency value="{main>amount}" currency="{main>currency}"/>
+                         </template>
+                    </Column>
+                    
+                </columns>
+            </TreeTable>
+        </m:content>
+    </m:Page>
+</mvc:View>

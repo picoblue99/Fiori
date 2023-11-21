@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {"name": "자산", 
+      "categories": [
+      {"name":"유동자산", "categories": [
+        {"name": "101 현금", "amount": 89.99, "currency": "KRW"},
+        {"name": "102 당좌예금", "amount": 47.99, "currency": "KRW"},
+        {"name": "108 외상매출금", "amount": 103.99, "currency": "KRW"},
+        {"name": "146 상품", "amount": 103.99, "currency": "KRW"},
+        {"name": "150 제품", "amount": 103.99, "currency": "KRW"},
+        {"name": "153 원재료", "amount": 103.99, "currency": "KRW"},
+        {"name": "169 재공품", "amount": 103.99, "currency": "KRW"}
+      ]},
+      {"name":"비유동자산", "categories": [
+        {"name": "201 토지", "amount": 89.99, "currency": "KRW"},
+        {"name": "202 건물", "amount": 47.99, "currency": "KRW"},
+        {"name": "206 기계장치", "amount": 103.99, "currency": "KRW"},
+        {"name": "208 차량운반구", "amount": 103.99, "currency": "KRW"},
+        {"name": "210 공구와기구", "amount": 103.99, "currency": "KRW"},
+        {"name": "212 비품", "amount": 103.99, "currency": "KRW"},
+        {"name": "240 소프트웨어", "amount": 103.99, "currency": "KRW"}
+      ]}
+    ]},
+    {"name": "부채", 
+      "categories": [
+      {"name":"유동부채", "categories": [
+        {"name": "251 외상매입금", "amount": 89.99, "currency": "KRW"},
+        {"name": "253 미지급금", "amount": 47.99, "currency": "KRW"}
+      ]}
+    ]},
+    {"name": "자본", 
+      "categories": [
+      {"name":"자본금", "categories": [
+        {"name": "401 자본금", "amount": 89.99, "currency": "KRW"},
+        {"name": "404 이익잉여금", "amount": 47.99, "currency": "KRW"}
+      ]}
+    ]}
+  ]
+}
