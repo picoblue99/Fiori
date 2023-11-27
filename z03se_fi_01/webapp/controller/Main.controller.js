@@ -10,13 +10,14 @@ sap.ui.define([
 
         return Controller.extend("z03sefi01.controller.Main", {
             onInit: function() {
-                const oRouter = this.getOwnerComponent().getRouter();
+                this.oRouter = this.getOwnerComponent().getRouter();
+
                 var oModel = new JSONModel({LocalChart : []});
                 oModel.loadData("../model/Coa.json")
                 this.getView().setModel(oModel,'main');
-
+                
                 this._setModel();
- 
+                this._onDetailPrice();
             },
 
             _setModel: function() {
@@ -83,16 +84,17 @@ sap.ui.define([
                     }
                 })
             },
-            onCategorySelect : function(oEvent){
-                debugger;
-                let sProductName = oEvent.getParameters();
-            },
-            onSelectData: function(oEvent) {
-                let sProductName = oEvent.getParameters();
+            //파이차트 클릭 시 페이지 열림
+            onSelectData: function(oEvent) { 
+            debugger;
+            let sAccPrice = oEvent.getParameters().data[0].data.AccPrice;
              
-                // this.getOwnerComponent().getRouter().navTo("RouteDetail", {
-                //     id : sProductName
-                // });
+
+            this.oRouter.navTo("RouteDetail", {
+                Acc_Price: sAccPrice
+            }).catch(function (error) {
+                console.error("라우팅 중 오류 발생:", error);
+            });  
             },
     
             onCollapseAll: function() {
@@ -113,6 +115,10 @@ sap.ui.define([
             onExpandSelection: function() {
                 var oTreeTable = this.byId("TreeTableBasic");
                 oTreeTable.expand(oTreeTable.getSelectedIndices());
+            },
+            _onDetailPrice : function(){
+                //SD (매출) , MM (매입)
+                 
             }
         });
     });

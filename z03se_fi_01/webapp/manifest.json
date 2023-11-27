@@ -90,6 +90,7 @@
         "viewPath": "z03sefi01.view",
         "controlAggregation": "pages",
         "controlId": "app",
+        "transition": "slide",
         "clearControlAggregation": false
       },
       "routes": [
@@ -98,6 +99,13 @@
           "pattern": ":?query:",
           "target": [
             "TargetMain"
+          ]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "detail/{Acc_Price}",
+          "target": [
+            "TargetDetail"
           ]
         }
       ],
@@ -108,6 +116,13 @@
           "clearControlAggregation": false,
           "viewId": "Main",
           "viewName": "Main"
+        },
+        "TargetDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Detail",
+          "viewName": "Detail"
         }
       }
     },
@@ -116,6 +131,9 @@
       "type": "XML",
       "async": true,
       "id": "App"
-    }	
+    },
+    "config": {
+      "fullWidth": true
+    }
   }
 }

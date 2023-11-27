@@ -9,7 +9,7 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
-        ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        ignoreCertError: false
         ui5:
           path:
             - /resources
@@ -18,7 +18,7 @@ server:
         backend:
           - path: /sap
             url: http://saphana01.konyang.ac.kr:8080/
-            client: '400'
+            client: "400"
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -35,3 +35,12 @@ server:
             mockdataPath: ./webapp/localService/data
             generateMockData: true
         annotations: []
+        service:
+          - urlPath: /sap/opu/odata/sap/Z03SE_GWFI01_SRV
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/metadata.xml
+            mockdataRootPath: ./webapp/localService/data
+          - urlPath: /sap/opu/odata/sap/Z03SE_GWFI01_SRV/
+            metadataXmlPath: ./webapp/localService/metadata.xml
+            mockdataRootPath: ./webapp/localService/mockdata
+            generateMockData: true

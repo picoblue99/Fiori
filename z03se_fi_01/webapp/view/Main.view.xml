@@ -18,7 +18,7 @@ xmlns:f="sap.f">
          <f:content>
             <m:VBox fitContainer="true">
             <m:Panel >
-        <m:content>
+        <m:content >
         <m:HBox >
             <TreeTable
                     id="TreeTableBasic"
@@ -64,7 +64,7 @@ xmlns:f="sap.f">
                 </columns>
             </TreeTable>
              <viz:VizFrame 
-                    id="Chart" 
+                    id="idChart" 
                     
                     vizProperties="{
                         'title' : { 'visible' : true , text : '재무상태 파이 차트'},
@@ -72,25 +72,29 @@ xmlns:f="sap.f">
                         'plotArea': {
                             drawingEffect: 'glossy',
                             dataLabel: { visible: true, type:'value'},
-                            colorPalette:['#B5B2FF', '#B2EBF4', '#B7F0B1', '#FFE08C', '#FFC19E', '#FFA7A7']
+                            colorPalette:['#B5B2FF', '#B7F0B1', '#E8D9FF']
                         }
                     }"
                     width="500px"
                     vizType='pie'
-                    selectData="onSelectData">
+                    selectData="onSelectData"
+                    >
                     <viz:dataset>
-                        <viz.data:FlattenedDataset data="{/Z03se_fit_slip_iSet}">
+                        <viz.data:FlattenedDataset  data="{/Z03se_fit_slip_iSet}">
                             <viz.data:dimensions>
-                                <viz.data:DimensionDefinition name="상품명" value="{main>amount}" />
+                                <viz.data:DimensionDefinition name="AccClass" 
+                                value="{AccClass}" />
                             </viz.data:dimensions>
+                            
                             <viz.data:measures>
-                                <viz.data:MeasureDefinition name="매출액" value="{main>amount}" />
+                                <viz.data:MeasureDefinition name="AccPrice" 
+                                value="{AccPrice}" />
                             </viz.data:measures>
                         </viz.data:FlattenedDataset>
                     </viz:dataset>
                     <viz:feeds>
-                        <viz.feeds:FeedItem uid="size" type="Measure" values="매출액" />
-                        <viz.feeds:FeedItem uid="color" type="Dimension" values="상품명" />
+                        <viz.feeds:FeedItem uid="color" type="Dimension" values="AccClass" />
+                        <viz.feeds:FeedItem uid="size" type="Measure" values="AccPrice" />
                     </viz:feeds>
                 </viz:VizFrame>
             </m:HBox>

@@ -1,9 +1,4 @@
-<mvc:View controllerName="test0000.controller.Main" 
-xmlns:fb="sap.ui.comp.filterbar"  xmlns:viz.data="sap.viz.ui5.data"
-    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-    xmlns:viz="sap.viz.ui5.controls"  xmlns:l="sap.ui.layout"
-xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"   xmlns:t="sap.ui.table"
-xmlns:f="sap.f" xmlns:core="sap.ui.core"  xmlns:lf="sap.ui.layout.form">
+<mvc:View controllerName="test0000.controller.Main" xmlns:fb="sap.ui.comp.filterbar" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:core="sap.ui.core">
     <f:DynamicPage toggleHeaderOnTitleClick="false">
         <f:title>
             <f:DynamicPageTitle>

@@ -1,0 +1,74 @@
+<mvc:View controllerName="z03sefi01.controller.Detail" xmlns="sap.m"
+    xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout" xmlns:f="sap.f"
+    xmlns:mvc="sap.ui.core.mvc" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data" height="100%">
+    <layout:FixFlex id='chartFixFlex' minFlexSize="250">
+        <!--Below is the setting panel -->
+        <layout:fixContent>
+           	<ObjectHeader
+				responsive="true"
+				fullScreenOptimized="true"
+				title="월별 매출매입 분석 차트"
+				  
+				numberState="Success"
+				backgroundDesign="Translucent">
+				
+			</ObjectHeader>
+        </layout:fixContent>
+        <layout:flexContent>
+            
+              <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='90%' width="100%" vizType='combination'
+                vizProperties="{
+                        'plotArea': {
+                             
+                            dataLabel: { visible: true, type:'value'},
+                            colorPalette:['#B5B2FF', '#B7F0B1', '#E8D9FF']
+                        }
+                    }">
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/ZSE_FI_SLIPSet}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="PostingDate"
+                                value="{ 
+                                    path: 'Pstdat',
+                                    formatter : '.fnDateToString'
+                                    }" />
+                        </viz.data:dimensions>
+                       <viz.data:measures>
+                            <viz.data:MeasureDefinition name="SDsales"
+                                value="{
+                                    parts: [
+                                        {path : 'ItemNum'},
+                                        {path : 'AccClass'},
+                                        {path :  'AccPrice'}],
+                                    formatter : '.fnSDPrice'
+                                }" />
+                            <viz.data:MeasureDefinition name="MMcost"
+                                value="{
+                                    parts: [
+                                        {path : 'ItemNum'},
+                                        {path : 'AccClass'},
+                                        {path : 'AccPrice'}],
+                                    formatter : '.fnMMPrice'
+                                }" />
+                            </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                        values="SDsales" />
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                        values="MMcost" />
+                    <viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension"
+                        values="PostingDate" />
+                </viz:feeds>
+                <viz:dependents>
+                    <viz:Popover id="idPopOver"></viz:Popover>
+                </viz:dependents>
+            </viz:VizFrame>
+            
+        </layout:flexContent>
+    </layout:FixFlex>
+</mvc:View>
